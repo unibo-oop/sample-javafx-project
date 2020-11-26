@@ -12,6 +12,8 @@ plugins {
 
     // Apply the application plugin to add support for building a CLI application
     application
+    
+    id("org.openjfx.javafxplugin") version "0.0.9"
 }
 
 repositories {
@@ -31,4 +33,14 @@ dependencies {
 application {
     // Define the main class for the application
     mainClassName = "it.unibo.samplejavafx.App"
+}
+
+javafx {
+    version = "14"
+    modules("javafx.controls", "javafx.fxml")
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_11
+    targetCompatibility = JavaVersion.VERSION_11
 }
