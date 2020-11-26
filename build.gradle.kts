@@ -44,3 +44,15 @@ java {
     sourceCompatibility = JavaVersion.VERSION_11
     targetCompatibility = JavaVersion.VERSION_11
 }
+
+tasks.withType<Jar> {
+  manifest {
+    attributes["Main-Class"] = "it.unibo.samplejavafx.App"
+  }
+
+  from(sourceSets.main.get().output)
+    dependsOn(configurations.runtimeClasspath)
+    from({
+      configurations.runtimeClasspath.get().filter { it.name.endsWith("jar") }.map { zipTree(it) }
+    })
+}
