@@ -5,6 +5,6 @@ package it.unibo.samplejavafx;
 
 public class App {
     public static void main(String[] args) {
-        JavaFXApp.main(args);
+        JavaFXApp2.main(args);
     }
 }
