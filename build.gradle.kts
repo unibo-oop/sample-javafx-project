@@ -24,7 +24,12 @@ repositories {
 
 dependencies {
     // This dependency is used by the application.
-    implementation("com.google.guava:guava:27.1-jre")
+    // implementation("com.google.guava:guava:27.1-jre")
+
+    /* for cross-platform jar: */
+    //runtimeOnly("org.openjfx:javafx-graphics:$javafx.version:win")
+    runtimeOnly("org.openjfx:javafx-graphics:$javafx.version:linux")
+    //runtimeOnly("org.openjfx:javafx-graphics:$javafx.version:mac")
 
     // Use JUnit test framework
     testImplementation("junit:junit:4.12")
@@ -36,8 +41,8 @@ application {
 }
 
 javafx {
-    version = "14"
-    modules("javafx.controls", "javafx.fxml")
+    version = "15"
+    modules("javafx.controls", "javafx.fxml", "javafx.swing")
 }
 
 java {
