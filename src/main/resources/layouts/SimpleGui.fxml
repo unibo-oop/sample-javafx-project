@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.* ?>
+<?import javafx.scene.layout.* ?>
+
+<HBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.unibo.samplejavafx.JavaFXAppWithFXMLController">
+	<children>
+	   <Button fx:id="myButton" text="Say Hello" onMouseClicked="#myButtonOnClickHandler"/>
+	   <Label fx:id="myLabel" text="Hold on there" />
+	</children>
+</HBox>
+
