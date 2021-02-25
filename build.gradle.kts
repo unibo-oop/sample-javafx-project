@@ -11,7 +11,7 @@ plugins {
      * In order to create it, launch the "shadowJar" task.
      * The runnable jar will be found in build/libs/projectname-all.jar
      */
-    id("com.github.johnrengelman.shadow") version "5.2.0"
+    id("com.github.johnrengelman.shadow") version "6.1.0"
 }
 
 repositories {
