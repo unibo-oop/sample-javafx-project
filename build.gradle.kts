@@ -30,6 +30,8 @@ val supportedPlatforms = listOf("linux", "mac", "win") // All required for OOP
 
 val javaFxVersion = 14
 
+val jUnitVersion = "5.7.1"
+
 dependencies {
     // Example library: Guava. Add what you need (and remove Guava if you don't use it)
     // implementation("com.google.guava:guava:28.1-jre")
@@ -40,8 +42,8 @@ dependencies {
         }
     }
     // JUnit API and testing engine
-    testImplementation("org.junit.jupiter:junit-jupiter-api:5.5.2")
-    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.5.2")
+    testImplementation("org.junit.jupiter:junit-jupiter-api:$jUnitVersion")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:$jUnitVersion")
 }
 
 tasks.withType<JavaCompile> {
