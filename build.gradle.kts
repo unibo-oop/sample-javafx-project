@@ -57,7 +57,7 @@ tasks.withType<Test> {
 
 application {
     // Define the main class for the application
-    mainClassName = "it.unibo.samplejavafx.App"
+    mainClass.set("it.unibo.samplejavafx.App")
 }
 
 java {
