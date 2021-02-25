@@ -28,7 +28,7 @@ val javaFXModules = listOf(
 
 val supportedPlatforms = listOf("linux", "mac", "win") // All required for OOP
 
-val javaFxVersion = 14
+val javaFxVersion = "15.0.1"
 
 val jUnitVersion = "5.7.1"
 
