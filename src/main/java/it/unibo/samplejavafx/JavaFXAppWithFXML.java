@@ -23,8 +23,14 @@ public class JavaFXAppWithFXML extends Application {
         primaryStage.show();
     }
 
-    public static void main(String[] args) {
+    public static void run(String[] args) {
         launch(args);
+    }
+    
+    public static class Main {
+        public static void main(String... args) {
+            JavaFXAppWithFXML.run(args);
+        }
     }
     
     static class AnotherStage extends Stage {

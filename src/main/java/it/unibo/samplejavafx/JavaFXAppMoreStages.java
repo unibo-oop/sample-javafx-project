@@ -22,8 +22,14 @@ public class JavaFXAppMoreStages extends Application {
         primaryStage.show();
     }
 
-    public static void main(String[] args) {
+    public static void run(String[] args) {
         launch();
+    }
+    
+    public static class Main {
+        public static void main(String... args) {
+            JavaFXAppMoreStages.run(args);
+        }
     }
     
     static class AnotherStage extends Stage {

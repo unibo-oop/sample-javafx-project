@@ -16,8 +16,14 @@ public class JavaFXApp2 extends Application {
         primaryStage.setTitle("JavaFXApp2");
         primaryStage.show();
     }
-
-    public static void main(String... args) {
+    
+    public static void run(String... args) {
         launch();
+    }
+
+    public static class Main {
+        public static void main(String... args) {
+            JavaFXApp2.run(args);
+        }
     }
 }

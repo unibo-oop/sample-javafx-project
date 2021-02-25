@@ -5,6 +5,6 @@ package it.unibo.samplejavafx;
 
 public class App {
     public static void main(String[] args) {
-        JavaFXAppWithFXML.main(args);
+        JavaFXApp.run(args);
     }
 }
