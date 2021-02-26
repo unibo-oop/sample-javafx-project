@@ -6,10 +6,14 @@ import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 
 public class JavaFXAppWithFXMLController {
-    @FXML private Label myLabel;
-    @FXML private Button myButton;
-    
-    @FXML public void myButtonOnClickHandler(MouseEvent evt) {
+    @FXML
+    private Label myLabel;
+
+    @FXML
+    private Button myButton;
+
+    @FXML
+    public final void myButtonOnClickHandler(final MouseEvent evt) {
         myLabel.setText("Clicked! " + evt.getClickCount());
     }
 }

@@ -11,8 +11,8 @@ import javafx.stage.Stage;
 public class JavaFXAppMoreStages extends Application {
 
     @Override
-    public void start(Stage primaryStage) throws Exception {
-        Button button = new Button("Create a new stage!"); 
+    public final void start(final Stage primaryStage) throws Exception {
+        final Button button = new Button("Create a new stage!");
         button.setFont(new Font(100));
         button.setOnMouseClicked(mouseEvent -> {
             new AnotherStage().show();
@@ -22,24 +22,31 @@ public class JavaFXAppMoreStages extends Application {
         primaryStage.show();
     }
 
-    public static void run(String[] args) {
+    public static void run(final String[] args) {
         launch();
     }
-    
-    public static class Main {
-        public static void main(String... args) {
+
+    public static final class Main {
+        private Main() {
+            // the constructor will never be called directly.
+        }
+
+        public static void main(final String... args) {
             JavaFXAppMoreStages.run(args);
         }
     }
-    
+
     static class AnotherStage extends Stage {
-        public AnotherStage() {
+        private static final int SCENE_WIDTH = 100;
+        private static final int SCENE_HEIGHT = 500;
+
+        AnotherStage() {
             super();
             setTitle("New stage created at " + System.currentTimeMillis());
-            VBox pane = new VBox();
+            final VBox pane = new VBox();
             pane.getChildren().add(new Label("First label"));
             pane.getChildren().add(new Label("Second label"));
-            setScene(new Scene(pane, 100, 500));
+            setScene(new Scene(pane, SCENE_WIDTH, SCENE_HEIGHT));
         }
     }
 }

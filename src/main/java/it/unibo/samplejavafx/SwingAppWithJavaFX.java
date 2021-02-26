@@ -15,36 +15,44 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 
-public class SwingAppWithJavaFX {
+public final class SwingAppWithJavaFX {
+    private static final int SCENE_WIDTH = 300;
+    private static final int SCENE_HEIGHT = 300;
 
-    public static void main(final String[] args){
+    private SwingAppWithJavaFX() {
+        // the constructor will never be called directly.
+    }
+
+    public static void main(final String[] args) {
         initMainJFrame(new JFrame("JFrame GUI"));
     }
-    
+
     private static void initMainJFrame(final JFrame frame) {
         final JButton button = new JButton();
         button.setText("Launch JavaFX Scene");
         button.addActionListener(event -> {
-          final JFXPanel jfxPanel = new JFXPanel();
-          Platform.runLater(() -> {
-            jfxPanel.setScene(new Scene(initJavaFXSceneUI(), 300, 300));
-            SwingUtilities.invokeLater(() -> {
-              final JFrame frameWithJavaFX = new JFrame("JFrame with JavaFX embedded!");
-              frameWithJavaFX.add(jfxPanel);
-              frameWithJavaFX.pack();
-              frameWithJavaFX.setVisible(true);
-        }); }); });
+            final JFXPanel jfxPanel = new JFXPanel();
+            Platform.runLater(() -> {
+                jfxPanel.setScene(new Scene(initJavaFXSceneUI(), SCENE_WIDTH, SCENE_HEIGHT));
+                SwingUtilities.invokeLater(() -> {
+                    final JFrame frameWithJavaFX = new JFrame("JFrame with JavaFX embedded!");
+                    frameWithJavaFX.add(jfxPanel);
+                    frameWithJavaFX.pack();
+                    frameWithJavaFX.setVisible(true);
+                });
+            });
+        });
 
         final JPanel panel = new JPanel();
         panel.setLayout(new FlowLayout());
         panel.add(button);
 
         frame.setContentPane(panel);
-        frame.setSize(300, 300);
+        frame.setSize(SCENE_WIDTH, SCENE_HEIGHT);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
     }
-    
+
     private static Parent initJavaFXSceneUI() {
         final Label lbl = new Label();
         lbl.setText("Hello, JavaFX World!");
@@ -52,7 +60,7 @@ public class SwingAppWithJavaFX {
         final Button btn = new Button();
         btn.setText("Say Hello");
         btn.setOnMouseClicked(event -> {
-          lbl.setText("Hello from Button!");
+            lbl.setText("Hello from Button!");
         });
 
         final VBox root = new VBox();
@@ -61,5 +69,5 @@ public class SwingAppWithJavaFX {
 
         return root;
     }
-    
+
 }
