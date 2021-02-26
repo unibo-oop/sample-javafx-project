@@ -1,0 +1,25 @@
+###############################################################################
+# Git Line Endings
+###############################################################################
+
+# Set default behavior to automatically normalize line endings.
+*                       text=auto   eol=lf      encoding=UTF-8
+
+# Force batch scripts to always use CRLF line endings so that if a repo is accessed
+# in Windows via a file share from Linux, the scripts will work.
+*.{cmd,[cC][mM][dD]}    text        eol=crlf
+*.{bat,[bB][aA][tT]}    text        eol=crlf
+*.ps1                   text        eol=crlf
+
+# Force bash scripts to always use LF line endings so that if a repo is accessed
+# in Unix via a file share from Windows, the scripts will work.
+*.bash                  text        eol=lf
+*.fish                  text        eol=lf
+*.sh                    text        eol=lf
+
+###############################################################################
+# Exclude files from exporting
+###############################################################################
+
+.gitattributes          export-ignore
+.gitignore              export-ignore
