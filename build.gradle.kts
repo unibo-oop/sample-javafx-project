@@ -11,7 +11,7 @@ plugins {
      * In order to create it, launch the "shadowJar" task.
      * The runnable jar will be found in build/libs/projectname-all.jar
      */
-    id("com.github.johnrengelman.shadow") version "6.1.0"
+    id("com.github.johnrengelman.shadow") version "7.0.0"
 }
 
 repositories {
@@ -60,14 +60,6 @@ tasks.withType<Test> {
 application {
     // Define the main class for the application
     mainClass.set("it.unibo.samplejavafx.App")
-
-    /*
-     * mainClassName was deprecated by Gradle, but it is still required by John Engelman's Shadow plugin.
-     * A pull request with a fix was already merged, but it hasn't been released yet;
-     * see https://github.com/johnrengelman/shadow/issues/609 and https://github.com/johnrengelman/shadow/pull/612
-     */
-    @Suppress("DEPRECATION")
-    mainClassName = mainClass.get()
 }
 
 java {
