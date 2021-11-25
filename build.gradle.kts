@@ -27,14 +27,8 @@ val javaFXModules = listOf(
 )
 
 val supportedPlatforms = listOf("linux", "mac", "win") // All required for OOP
-
-<<<<<<< HEAD
-val javaFxVersion = "15.0.1"
-
 val jUnitVersion = "5.7.1"
-=======
-val javaFxVersion = 17
->>>>>>> Update build and launchers
+val javaFxVersion = 15
 
 dependencies {
     // Example library: Guava. Add what you need (and remove Guava if you don't use it)
@@ -65,11 +59,3 @@ application {
     // Define the main class for the application
     mainClass.set("it.unibo.samplejavafx.App")
 }
-
-<<<<<<< HEAD
-java {
-    sourceCompatibility = JavaVersion.VERSION_11
-    targetCompatibility = JavaVersion.VERSION_11
-}
-=======
->>>>>>> Update build and launchers

@@ -21,16 +21,20 @@ public final class JavaFXApp extends Application {
         launch();
     }
 
-    
+    // Defining the main methods directly within JavaFXApp may be problematic:
+    // public static void main(final String[] args) {
+    //        run();
+    // }
+
     public static final class Main {
         private Main() {
             // the constructor will never be called directly.
         }
-        
-        public static void main(String... args) {
+
+        public static void main(final String...args) {
             Application.launch(JavaFXApp.class, args);
             // The following line raises: Error: class it.unibo.samplejavafx.JavaFXApp$Main is not a subclass of javafx.application.Application
-        	// JavaFXApp.launch(args);
+            // JavaFXApp.launch(args);
             // Whereas the following would do just fine:
             // JavaFXApp.run(args)
         }
