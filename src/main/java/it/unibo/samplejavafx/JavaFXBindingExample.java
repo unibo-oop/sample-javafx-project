@@ -7,6 +7,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
+/**
+ * Sample JavaFX application with an example of data binding.
+ */
 public class JavaFXBindingExample extends Application {
 
     @Override
@@ -26,15 +29,26 @@ public class JavaFXBindingExample extends Application {
         primaryStage.show();
     }
 
+    /**
+     * Program's entry point.
+     * @param args
+     */
     public static void run(final String... args) {
         launch();
     }
 
+    /**
+     * Entry point's class.
+     */
     public static final class Main {
         private Main() {
             // the constructor will never be called directly.
         }
 
+        /**
+         * Program's entry point.
+         * @param args
+         */
         public static void main(final String... args) {
             JavaFXBindingExample.run(args);
         }

@@ -8,6 +8,9 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
+/**
+ * Sample JavaFX application with more than on stage.
+ */
 public class JavaFXAppMoreStages extends Application {
 
     @Override
@@ -22,21 +25,28 @@ public class JavaFXAppMoreStages extends Application {
         primaryStage.show();
     }
 
-    public static void run(final String[] args) {
-        launch();
+    private static void run(final String[] args) {
+        launch(args);
     }
 
+    /**
+     * Entry point class.
+     */
     public static final class Main {
         private Main() {
             // the constructor will never be called directly.
         }
 
+        /** 
+         * Entry point of the program.
+         * @param args
+         */
         public static void main(final String... args) {
             JavaFXAppMoreStages.run(args);
         }
     }
 
-    static class AnotherStage extends Stage {
+    private static class AnotherStage extends Stage {
         private static final int SCENE_WIDTH = 100;
         private static final int SCENE_HEIGHT = 500;
 

@@ -8,6 +8,9 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+/**
+ * Sample JavaFX application with GUI declared in FXML file.
+ */
 public class JavaFXAppWithFXML extends Application {
 
     @Override
@@ -21,15 +24,22 @@ public class JavaFXAppWithFXML extends Application {
         primaryStage.show();
     }
 
-    public static void run(final String[] args) {
+    private static void run(final String[] args) {
         launch(args);
     }
 
+    /**
+     * Entry point class.
+     */
     public static final class Main {
         private Main() {
             // the constructor will never be called directly.
         }
 
+        /**
+         * Program's entry point.
+         * @param args
+         */
         public static void main(final String... args) {
             JavaFXAppWithFXML.run(args);
         }

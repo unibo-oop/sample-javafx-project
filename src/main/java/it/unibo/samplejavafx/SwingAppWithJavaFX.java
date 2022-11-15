@@ -15,6 +15,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 
+/**
+ * Swing applications that embeds a JavaFX panel.
+ */
 public final class SwingAppWithJavaFX {
     private static final int SCENE_WIDTH = 300;
     private static final int SCENE_HEIGHT = 300;
@@ -23,6 +26,10 @@ public final class SwingAppWithJavaFX {
         // the constructor will never be called directly.
     }
 
+    /**
+     * Program's entry point.
+     * @param args
+     */
     public static void main(final String[] args) {
         initMainJFrame(new JFrame("JFrame GUI"));
     }
@@ -69,5 +76,4 @@ public final class SwingAppWithJavaFX {
 
         return root;
     }
-
 }

@@ -59,8 +59,3 @@ application {
     // Define the main class for the application
     mainClass.set("it.unibo.samplejavafx.App")
 }
-
-// @Roby: please remove this entry and fix the Javadoc as you see fit!
-checkstyle {
-    isIgnoreFailures = true
-}
