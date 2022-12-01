@@ -42,40 +42,43 @@ public final class PlayingWithBounds extends Application {
             go
         );
         go.setOnAction(e -> {
-            Stage stage = new Stage();
-            if(!stageWidth.getText().isBlank()) {
+            final Stage stage = new Stage();
+            if (!stageWidth.getText().isBlank()) {
                 stage.setTitle("W=" + stageWidth.getText());
                 stage.setWidth(Double.parseDouble(stageWidth.getText()));
             }
-            if(!stageHeight.getText().isBlank()) {
+            if (!stageHeight.getText().isBlank()) {
                 stage.setTitle(stage.getTitle() + "; H=" + stageHeight.getText());
                 stage.setHeight(Double.parseDouble(stageHeight.getText()));
             }
-            VBox rootNode = new VBox();
-            rootNode.setBorder(new Border(new BorderStroke[]{ new BorderStroke(Color.RED, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, new BorderWidths(5 )) }));
-            Label someLabel0 = new Label();
-            Label someLabel1 = new Label("Label 1");
-            if(!rootWidth.getText().isBlank()) {
+            final VBox rootNode = new VBox();
+            final double borderWidth = 5;
+            rootNode.setBorder(new Border(new BorderStroke[] { 
+                new BorderStroke(Color.RED, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, new BorderWidths(borderWidth)) 
+            }));
+            final Label someLabel0 = new Label();
+            final Label someLabel1 = new Label("Label 1");
+            if (!rootWidth.getText().isBlank()) {
                 someLabel1.setText("VBox Pref W: " + rootWidth.getText() + "; ");
                 rootNode.setPrefWidth(Double.parseDouble(rootWidth.getText()));
             }
-            if(!rootHeight.getText().isBlank()) {
+            if (!rootHeight.getText().isBlank()) {
                 someLabel1.setText(someLabel1.getText() + "VBox Pref W: " + rootHeight.getText() + ".");
                 rootNode.setPrefHeight(Double.parseDouble(rootHeight.getText()));
             }
-            TextField someTextField = new TextField();
-            if(!nodeWidth.getText().isBlank()) {
+            final TextField someTextField = new TextField();
+            if (!nodeWidth.getText().isBlank()) {
                 someTextField.appendText("Pref W: " + nodeWidth.getText() + "; ");
                 someTextField.setPrefWidth(Double.parseDouble(nodeWidth.getText()));
             }
-            if(!nodeHeight.getText().isBlank()) {
+            if (!nodeHeight.getText().isBlank()) {
                 someTextField.appendText("Pref H: " + nodeWidth.getText() + ".");
                 someTextField.setPrefHeight(Double.parseDouble(nodeHeight.getText()));
             }
-            Label someLabel2 = new Label("Label 2");
+            final Label someLabel2 = new Label("Label 2");
             rootNode.getChildren().addAll(someLabel0, someLabel2, someLabel1, someTextField);
-            Scene scene;
-            if(!sceneWidth.getText().isBlank() && !sceneHeight.getText().isBlank()) {
+            final Scene scene;
+            if (!sceneWidth.getText().isBlank() && !sceneHeight.getText().isBlank()) {
                 someLabel1.setText("Scene W/H: " + sceneWidth.getText() + ", " + sceneHeight.getText());
                 scene = new Scene(rootNode, Double.parseDouble(sceneWidth.getText()), Double.parseDouble(sceneHeight.getText()));
             } else {
