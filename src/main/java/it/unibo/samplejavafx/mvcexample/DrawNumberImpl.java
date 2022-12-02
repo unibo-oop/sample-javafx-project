@@ -3,21 +3,23 @@ package it.unibo.samplejavafx.mvcexample;
 import java.util.Optional;
 import java.util.Random;
 
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import javafx.beans.property.Property;
 import javafx.beans.property.SimpleObjectProperty;
 
 /**
  *
  */
+@SuppressFBWarnings()
 public final class DrawNumberImpl implements DrawNumberObservable {
 
-    private Property<Integer> choice;
+    private final Property<Integer> choice;
     private final Property<Integer> min;
     private final Property<Integer> max;
     private final Property<Integer> attempts;
-    private Property<Integer> remainingAttempts;
-    private Property<Optional<Integer>> lastGuess;
-    private Property<Optional<DrawResult>> lastGuessResult;
+    private final Property<Integer> remainingAttempts;
+    private final Property<Optional<Integer>> lastGuess;
+    private final Property<Optional<DrawResult>> lastGuessResult;
     private final Random random = new Random();
 
     /**
@@ -25,16 +27,16 @@ public final class DrawNumberImpl implements DrawNumberObservable {
      * @throws IllegalStateException if the configuration is not consistent
      */
     public DrawNumberImpl(final Configuration configuration) {
-        lastGuess = new SimpleObjectProperty<Optional<Integer>>(Optional.empty());
-        lastGuessResult = new SimpleObjectProperty<Optional<DrawResult>>(Optional.empty());
+        lastGuess = new SimpleObjectProperty<>(Optional.empty());
+        lastGuessResult = new SimpleObjectProperty<>(Optional.empty());
         if (!configuration.isConsistent()) {
             throw new IllegalArgumentException("The game requires a valid configuration");
         }
-        this.min = new SimpleObjectProperty<Integer>(configuration.getMin());
-        this.max = new SimpleObjectProperty<Integer>(configuration.getMax());
-        this.attempts = new SimpleObjectProperty<Integer>(configuration.getAttempts());
-        this.remainingAttempts = new SimpleObjectProperty<Integer>(configuration.getAttempts());
-        this.choice = new SimpleObjectProperty<Integer>(configuration.getAttempts());
+        this.min = new SimpleObjectProperty<>(configuration.getMin());
+        this.max = new SimpleObjectProperty<>(configuration.getMax());
+        this.attempts = new SimpleObjectProperty<>(configuration.getAttempts());
+        this.remainingAttempts = new SimpleObjectProperty<>(configuration.getAttempts());
+        this.choice = new SimpleObjectProperty<>(configuration.getAttempts());
         this.reset();
     }
 
@@ -54,14 +56,14 @@ public final class DrawNumberImpl implements DrawNumberObservable {
         if (guess < this.min.getValue() || guess > this.max.getValue()) {
             throw new IllegalArgumentException("The number is outside boundaries");
         }
-        remainingAttempts.setValue(remainingAttempts.getValue()-1);
+        remainingAttempts.setValue(remainingAttempts.getValue() - 1);
         if (guess > this.choice.getValue()) {
             result = DrawResult.YOURS_HIGH;
         }
         if (guess < this.choice.getValue()) {
             result = DrawResult.YOURS_LOW;
         }
-        if(guess == this.choice.getValue()) {
+        if (guess == this.choice.getValue()) {
             result = DrawResult.YOU_WON;
         }
         lastGuessResult.setValue(Optional.of(result));

@@ -8,33 +8,53 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-public class MessageDialog {
+/**
+ * Utility classes for message dialogs.
+ */
+public final class MessageDialog {
+    private MessageDialog() {
+    }
 
-    public static void showMessageDialog(Stage owner, String title, String text) {
-        Stage s = new Stage();
+    /**
+     * Shows a message dialog.
+     * @param owner
+     * @param title
+     * @param text
+     */
+    public static void showMessageDialog(final Stage owner, final String title, final String text) {
+        final Stage s = new Stage();
         s.initOwner(owner);
         s.initModality(Modality.APPLICATION_MODAL);
 
-        Label label = new Label(text);
-        Button closeButton = new Button("Close");
+        final Label label = new Label(text);
+        final Button closeButton = new Button("Close");
         closeButton.setOnAction(e -> s.close());
 
-        VBox root = new VBox();
+        final VBox root = new VBox();
         root.getChildren().addAll(label, closeButton);
-        Scene scene = new Scene(root, 200, 100);
+        final Scene scene = new Scene(root);
         s.setScene(scene);
         s.setTitle(title);
         s.show();
     }
 
-    public static CompletableFuture<Boolean> showConfirmDialog(Stage owner, String title, String text, CompletableFuture<Boolean> future) {
-        Stage s = new Stage();
+    /**
+     * Show a confirmation dialog.
+     * @param owner
+     * @param title
+     * @param text
+     * @param future
+     * @return a completable future for the confirmation
+     */
+    public static CompletableFuture<Boolean> showConfirmDialog(
+        final Stage owner, final String title, final String text, final CompletableFuture<Boolean> future) {
+        final Stage s = new Stage();
         s.initOwner(owner);
         s.initModality(Modality.APPLICATION_MODAL);
 
-        Label label = new Label(text);
-        Button confirmButton = new Button("Confirm");
-        Button closeButton = new Button("Close");
+        final Label label = new Label(text);
+        final Button confirmButton = new Button("Confirm");
+        final Button closeButton = new Button("Close");
         confirmButton.setOnAction(e -> {
             future.complete(true);
             s.close();
@@ -44,9 +64,9 @@ public class MessageDialog {
             s.close();
         });
 
-        VBox root = new VBox();
+        final VBox root = new VBox();
         root.getChildren().addAll(label, confirmButton, closeButton);
-        Scene scene = new Scene(root, 200, 100);
+        final Scene scene = new Scene(root);
         s.setScene(scene);
         s.setTitle(title);
         s.show();

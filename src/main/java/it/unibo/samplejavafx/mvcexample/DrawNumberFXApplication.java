@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -11,22 +12,25 @@ import java.util.List;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.geometry.BoundingBox;
-import javafx.geometry.Bounds;
 import javafx.stage.Stage;
 
-public class DrawNumberFXApplication extends Application implements DrawNumberViewObserver {
+/**
+ * JavaFX application for the "draw number" game.
+ */
+public final class DrawNumberFXApplication extends Application implements DrawNumberViewObserver {
 
     private DrawNumberObservable model;
     private List<DrawNumberView> views;
 
     @Override
+    @SuppressWarnings("PMD.SystemPrintln")
     public void init() {
-        Parameters params = getParameters();
-        String configFile = params.getRaw().stream().findFirst().orElseGet(() -> "examplemvc/config.yml");
+        final Parameters params = getParameters();
+        final String configFile = params.getRaw().stream().findFirst().orElseGet(() -> "examplemvc/config.yml");
 
         final Configuration.Builder configurationBuilder = new Configuration.Builder();
         try (var contents = new BufferedReader(
-                new InputStreamReader(ClassLoader.getSystemResourceAsStream(configFile)))) {
+                new InputStreamReader(ClassLoader.getSystemResourceAsStream(configFile), StandardCharsets.UTF_8))) {
             for (var configLine = contents.readLine(); configLine != null; configLine = contents.readLine()) {
                 final String[] lineElements = configLine.split(":");
                 if (lineElements.length == 2) {
@@ -63,13 +67,13 @@ public class DrawNumberFXApplication extends Application implements DrawNumberVi
                 new PrintStreamView(System.out)));
         try {
             views.add(new PrintStreamView("output.log"));
-        } catch(FileNotFoundException fnfe) {
+        } catch (FileNotFoundException fnfe) {
             System.out.println("Cannot find output file: " + fnfe.getMessage());
-        }        
+        }
     }
 
     @Override
-    public void start(Stage primaryStage) throws Exception {
+    public void start(final Stage primaryStage) throws Exception {
         for (final DrawNumberView view : views) {
             view.setObserver(this);
             view.start();

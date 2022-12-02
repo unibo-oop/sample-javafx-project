@@ -2,15 +2,13 @@ package it.unibo.samplejavafx.mvcexample;
 
 import java.util.concurrent.CompletableFuture;
 
-import javafx.beans.binding.StringBinding;
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.geometry.Bounds;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -18,6 +16,7 @@ import javafx.stage.Stage;
 /**
  * Graphical {@link DrawNumberView} implementation.
  */
+@SuppressFBWarnings()
 public final class DrawNumberViewImpl implements DrawNumberView {
 
     private static final String FRAME_NAME = "Draw Number App";
@@ -32,7 +31,12 @@ public final class DrawNumberViewImpl implements DrawNumberView {
     private final DrawNumberObservable model;
     private final Bounds initialBounds;
 
-    public DrawNumberViewImpl(DrawNumberObservable model, Bounds initialBounds) {
+    /**
+     * Initialises a view implementation for a drawnumber game.
+     * @param model
+     * @param initialBounds
+     */
+    public DrawNumberViewImpl(final DrawNumberObservable model, final Bounds initialBounds) {
         this.model = model;
         this.initialBounds = initialBounds;
     }
@@ -41,24 +45,24 @@ public final class DrawNumberViewImpl implements DrawNumberView {
     public void start() {
         frame = new Stage();
         frame.setTitle(FRAME_NAME);
-        if(initialBounds != null) {
+        if (initialBounds != null) {
             frame.setX(initialBounds.getMinX());
             frame.setY(initialBounds.getMinY());
         }
 
-        VBox vbox = new VBox();
-        HBox playControlsLayout = new HBox();
+        final VBox vbox = new VBox();
+        final HBox playControlsLayout = new HBox();
         final TextField tNumber = new TextField();
         final Button bGo = new Button(GO);
         message = new Label();
         playControlsLayout.getChildren().addAll(tNumber, bGo, message);
 
-        HBox gameControlsLayout = new HBox();
+        final HBox gameControlsLayout = new HBox();
         final Button bReset = new Button(RESET);
         final Button bQuit = new Button(QUIT);
         gameControlsLayout.getChildren().addAll(bReset, bQuit);
 
-        Label stateMessage = new Label();
+        final Label stateMessage = new Label();
         stateMessage.textProperty().bind(new SimpleStringProperty("Min=")
             .concat(model.minProperty())
             .concat("; Max=")
@@ -84,23 +88,27 @@ public final class DrawNumberViewImpl implements DrawNumberView {
             }
         });
         bQuit.setOnAction(e -> {
-            CompletableFuture<Boolean> f = new CompletableFuture<>();
+            final CompletableFuture<Boolean> f = new CompletableFuture<>();
             f.thenAccept(b -> {
-                if (b)
+                if (b) {
                     observer.quit();
+                }
             });
             MessageDialog.showConfirmDialog(frame, "Confirmation needed", "Confirm quitting?", f);
         });
         bReset.setOnAction(e -> {
-            CompletableFuture<Boolean> f = new CompletableFuture<>();
+            final CompletableFuture<Boolean> f = new CompletableFuture<>();
             f.thenAccept(b -> {
-                if (b)
+                if (b) {
                     observer.resetGame();
+                }
             });
             MessageDialog.showConfirmDialog(frame, "Confirmation needed", "Confirm resetting?", f);
         });
 
-        Scene scene = new Scene(vbox, 600, 200);
+        final int sceneWidth = 600;
+        final int sceneHeight = 200;
+        final Scene scene = new Scene(vbox, sceneWidth, sceneHeight);
 
         this.frame.setScene(scene);
 
@@ -121,16 +129,18 @@ public final class DrawNumberViewImpl implements DrawNumberView {
     public void result(final DrawResult res) {
         switch (res) {
             case YOURS_HIGH:
+                plainMessage(res.getDescription());
+                return;
             case YOURS_LOW:
-                plainMessage("Try again", res.getDescription());
+                plainMessage(res.getDescription());
                 return;
             case YOU_WON:
-                plainMessage("Won", res.getDescription() + NEW_GAME);
+                plainMessage(res.getDescription() + NEW_GAME);
                 break;
             case YOU_LOST:
                 // JOptionPane.showMessageDialog(frame, res.getDescription() + NEW_GAME, "Lost",
                 // JOptionPane.WARNING_MESSAGE);
-                plainMessage("Lost", res.getDescription() + NEW_GAME);
+                plainMessage(res.getDescription() + NEW_GAME);
                 break;
             default:
                 throw new IllegalStateException("Unexpected result: " + res);
@@ -138,7 +148,7 @@ public final class DrawNumberViewImpl implements DrawNumberView {
         observer.resetGame();
     }
 
-    private void plainMessage(final String title, final String msg) {
+    private void plainMessage(final String msg) {
         // MessageDialog.showMessageDialog(frame, title, msg);
         message.setText(msg);
     }

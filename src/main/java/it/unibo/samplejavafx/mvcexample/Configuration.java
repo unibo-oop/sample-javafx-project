@@ -61,6 +61,7 @@ public final class Configuration {
      * the builder, we emulate the so-called "named arguments".
      * 
      */
+    @SuppressWarnings("PMD.LinguisticNaming")
     public static class Builder {
 
         private static final int MIN = 0;
@@ -70,7 +71,7 @@ public final class Configuration {
         private int min = MIN;
         private int max = MAX;
         private int attempts = ATTEMPTS;
-        private boolean consumed = false;
+        private boolean consumed;
 
         /**
          * @param min the minimum value

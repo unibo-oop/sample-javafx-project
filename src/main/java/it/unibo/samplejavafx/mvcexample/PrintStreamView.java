@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.PrintStream;
+import java.nio.charset.StandardCharsets;
 
 /**
  * This class implements a view that can write on any PrintStream.
@@ -16,7 +17,7 @@ public final class PrintStreamView implements DrawNumberView {
      * @param stream the {@link PrintStream} where to write
      */
     public PrintStreamView(final PrintStream stream) {
-        out = stream;
+        out = new PrintStream(stream, true, StandardCharsets.UTF_8);
     }
 
     /**
@@ -26,7 +27,7 @@ public final class PrintStreamView implements DrawNumberView {
      * @throws FileNotFoundException 
      */
     public PrintStreamView(final String path) throws FileNotFoundException {
-        out = new PrintStream(new FileOutputStream(new File(path)));
+        out = new PrintStream(new FileOutputStream(new File(path)), true, StandardCharsets.UTF_8);
     }
 
     @Override
