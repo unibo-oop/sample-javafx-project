@@ -122,7 +122,7 @@ public final class PlayingWithBounds extends Application {
          * Program's entry point.
          * @param args
          */
-        public static void main(final String...args) {
+        public static void main(final String... args) {
             Application.launch(PlayingWithBounds.class, args);
         }
     }

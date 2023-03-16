@@ -45,7 +45,7 @@ public final class JavaFXApp extends Application {
          * Program's entry point.
          * @param args
          */
-        public static void main(final String...args) {
+        public static void main(final String... args) {
             Application.launch(JavaFXApp.class, args);
             /* 
             The following line raises: Error: class it.unibo.samplejavafx.JavaFXApp$Main 
