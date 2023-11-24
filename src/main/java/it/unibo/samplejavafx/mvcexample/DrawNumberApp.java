@@ -17,7 +17,6 @@ public final class DrawNumberApp {
      * @throws FileNotFoundException 
      */
     public static void main(final String... args) throws FileNotFoundException {
-        Application.launch(DrawNumberFXApplication.class, 
-                "examplemvc/config.yml");
+        Application.launch(DrawNumberFXApplication.class, "examplemvc/config.yml");
     }
 }
