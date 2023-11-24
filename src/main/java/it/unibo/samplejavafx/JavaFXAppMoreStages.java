@@ -14,7 +14,7 @@ import javafx.stage.Stage;
 public class JavaFXAppMoreStages extends Application {
 
     @Override
-    public final void start(final Stage primaryStage) throws Exception {
+    public final void start(final Stage primaryStage) {
         final Button button = new Button("Create a new stage!");
         button.setFont(new Font(100));
         button.setOnMouseClicked(mouseEvent -> {
