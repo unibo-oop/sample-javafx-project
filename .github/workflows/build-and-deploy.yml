@@ -25,7 +25,7 @@ jobs:
     steps:
       - name: Checkout
         uses: DanySK/action-checkout@0.2.18
-      - uses: DanySK/build-check-deploy-gradle-action@2.4.19
+      - uses: DanySK/build-check-deploy-gradle-action@2.4.20
         with:
           java-version: ${{ matrix.jvm_version }}
           should-run-codecov: false
