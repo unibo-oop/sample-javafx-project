@@ -44,7 +44,7 @@ dependencies {
         }
     }
 
-    val jUnitVersion = "5.10.2"
+    val jUnitVersion = "5.10.3"
     // JUnit API and testing engine
     testImplementation("org.junit.jupiter:junit-jupiter-api:$jUnitVersion")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:$jUnitVersion")
