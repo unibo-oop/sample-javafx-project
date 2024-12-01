@@ -15,12 +15,15 @@ on:
   workflow_dispatch:
 
 jobs:
-  Build:
+  build:
     if: contains(github.repository, 'sample-javafx-project') && !github.event.repository.fork
     strategy:
       matrix:
-        os: [windows, macos, ubuntu]
-        jvm_version: [17, 18, 19]
+        os:
+          - windows-2022
+          - macos-13
+          - ubuntu-22.04
+        jvm_version: [17, 21, 23]
     runs-on: ${{ matrix.os }}-latest
     steps:
       - name: Checkout
@@ -31,3 +34,15 @@ jobs:
           should-run-codecov: false
           should-deploy: false
           should-validate-wrapper: ${{ matrix.os == 'ubuntu' && matrix.jvm_version == '17' }}
+  success:
+    runs-on: ubuntu-24.04
+    needs:
+      - build
+    if: >-
+      always() && (
+        contains(join(needs.*.result, ','), 'failure')
+        || !contains(join(needs.*.result, ','), 'cancelled')
+      )
+    steps:
+      - name: Verify that there were no failures
+        run: ${{ !contains(join(needs.*.result, ','), 'failure') }}

@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import java.util.Objects;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.geometry.BoundingBox;
@@ -29,8 +30,8 @@ public final class DrawNumberFXApplication extends Application implements DrawNu
         final String configFile = params.getRaw().stream().findFirst().orElseGet(() -> "examplemvc/config.yml");
 
         final Configuration.Builder configurationBuilder = new Configuration.Builder();
-        try (var contents = new BufferedReader(
-                new InputStreamReader(ClassLoader.getSystemResourceAsStream(configFile), StandardCharsets.UTF_8))) {
+        final var config = Objects.requireNonNull(ClassLoader.getSystemResourceAsStream(configFile));
+        try (var contents = new BufferedReader(new InputStreamReader(config, StandardCharsets.UTF_8))) {
             for (var configLine = contents.readLine(); configLine != null; configLine = contents.readLine()) {
                 final String[] lineElements = configLine.split(":");
                 if (lineElements.length == 2) {
@@ -54,17 +55,17 @@ public final class DrawNumberFXApplication extends Application implements DrawNu
             this.model = new DrawNumberImpl(configuration);
         } else {
             displayError("Inconsistent configuration: "
-                    + "min: " + configuration.getMin() + ", "
-                    + "max: " + configuration.getMax() + ", "
-                    + "attempts: " + configuration.getAttempts() + ". Using defaults instead.");
+                + "min: " + configuration.getMin() + ", "
+                + "max: " + configuration.getMax() + ", "
+                + "attempts: " + configuration.getAttempts() + ". Using defaults instead.");
             this.model = new DrawNumberImpl(new Configuration.Builder().build());
         }
-
         views = new ArrayList<>();
         views.addAll(Arrays.asList(
-                new DrawNumberViewImpl(model, new BoundingBox(0, 0, 0, 0)),
-                new DrawNumberViewImpl(model, null),
-                new PrintStreamView(System.out)));
+            new DrawNumberViewImpl(model, new BoundingBox(0, 0, 0, 0)),
+            new DrawNumberViewImpl(model, null),
+            new PrintStreamView(System.out))
+        );
         try {
             views.add(new PrintStreamView("output.log"));
         } catch (FileNotFoundException fnfe) {

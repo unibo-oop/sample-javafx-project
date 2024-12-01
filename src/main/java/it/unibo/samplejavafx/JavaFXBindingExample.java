@@ -13,7 +13,7 @@ import javafx.stage.Stage;
 public class JavaFXBindingExample extends Application {
 
     @Override
-    public final void start(final Stage primaryStage) throws Exception {
+    public final void start(final Stage primaryStage) {
         final TextField input1 = new TextField();
         final TextField input2 = new TextField();
         final Label label = new Label();
@@ -29,11 +29,7 @@ public class JavaFXBindingExample extends Application {
         primaryStage.show();
     }
 
-    /**
-     * Program's entry point.
-     * @param args
-     */
-    public static void run(final String... args) {
+    private static void run() {
         launch();
     }
 
@@ -47,10 +43,10 @@ public class JavaFXBindingExample extends Application {
 
         /**
          * Program's entry point.
-         * @param args
+         * @param args ignored
          */
         public static void main(final String... args) {
-            JavaFXBindingExample.run(args);
+            run();
         }
     }
 }

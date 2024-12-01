@@ -23,7 +23,7 @@ import javafx.stage.Stage;
 public final class PlayingWithBounds extends Application {
 
     @Override
-    public void start(final Stage primaryStage) throws Exception {
+    public void start(final Stage primaryStage) {
         final VBox vbox = new VBox(); 
         final TextField stageWidth = new TextField();
         final TextField stageHeight = new TextField(); 
@@ -53,9 +53,16 @@ public final class PlayingWithBounds extends Application {
             }
             final VBox rootNode = new VBox();
             final double borderWidth = 5;
-            rootNode.setBorder(new Border(new BorderStroke[] { 
-                new BorderStroke(Color.RED, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, new BorderWidths(borderWidth)) 
-            }));
+            rootNode.setBorder(
+                new Border(
+                    new BorderStroke(
+                        Color.RED,
+                        BorderStrokeStyle.SOLID,
+                        CornerRadii.EMPTY,
+                        new BorderWidths(borderWidth)
+                    )
+                )
+            );
             final Label someLabel0 = new Label();
             final Label someLabel1 = new Label("Label 1");
             if (!rootWidth.getText().isBlank()) {
@@ -120,10 +127,10 @@ public final class PlayingWithBounds extends Application {
 
         /**
          * Program's entry point.
-         * @param args
+         * @param args ignored
          */
         public static void main(final String... args) {
-            Application.launch(PlayingWithBounds.class, args);
+            launch(PlayingWithBounds.class, args);
         }
     }
 }

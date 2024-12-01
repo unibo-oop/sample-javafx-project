@@ -17,9 +17,7 @@ public class JavaFXAppMoreStages extends Application {
     public final void start(final Stage primaryStage) {
         final Button button = new Button("Create a new stage!");
         button.setFont(new Font(100));
-        button.setOnMouseClicked(mouseEvent -> {
-            new AnotherStage().show();
-        });
+        button.setOnMouseClicked(mouseEvent -> new AnotherStage().show());
         primaryStage.setScene(new Scene(button));
         primaryStage.setTitle("Hello");
         primaryStage.show();
@@ -39,10 +37,10 @@ public class JavaFXAppMoreStages extends Application {
 
         /** 
          * Entry point of the program.
-         * @param args
+         * @param args ignored
          */
         public static void main(final String... args) {
-            JavaFXAppMoreStages.run(args);
+            run(args);
         }
     }
 

@@ -12,9 +12,6 @@ public class JavaFXAppWithFXMLController {
     @FXML
     private Label myLabel;
 
-    @FXML
-    private Button myButton;
-
     /**
      * Event handler for `myButton`.
      * @param evt

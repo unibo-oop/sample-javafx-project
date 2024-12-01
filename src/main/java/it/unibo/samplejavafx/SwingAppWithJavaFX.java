@@ -28,7 +28,7 @@ public final class SwingAppWithJavaFX {
 
     /**
      * Program's entry point.
-     * @param args
+     * @param args ignored
      */
     public static void main(final String[] args) {
         initMainJFrame(new JFrame("JFrame GUI"));
@@ -49,11 +49,11 @@ public final class SwingAppWithJavaFX {
                 });
             });
         });
-
+        // Create a panel and add the button to it
         final JPanel panel = new JPanel();
         panel.setLayout(new FlowLayout());
         panel.add(button);
-
+        // Set the panel as the content pane of the frame
         frame.setContentPane(panel);
         frame.setSize(SCENE_WIDTH, SCENE_HEIGHT);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -61,19 +61,18 @@ public final class SwingAppWithJavaFX {
     }
 
     private static Parent initJavaFXSceneUI() {
-        final Label lbl = new Label();
-        lbl.setText("Hello, JavaFX World!");
-
-        final Button btn = new Button();
-        btn.setText("Say Hello");
-        btn.setOnMouseClicked(event -> {
-            lbl.setText("Hello from Button!");
+        final Label label = new Label();
+        label.setText("Hello, JavaFX World!");
+        // Create a button and set its action
+        final Button button = new Button();
+        button.setText("Say Hello");
+        button.setOnMouseClicked(event -> {
+            label.setText("Hello from Button!");
         });
-
+        // Create a layout and add the label and the button to it
         final VBox root = new VBox();
-        root.getChildren().add(lbl);
-        root.getChildren().add(btn);
-
+        root.getChildren().add(label);
+        root.getChildren().add(button);
         return root;
     }
 }

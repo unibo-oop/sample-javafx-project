@@ -5,13 +5,13 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<HBox xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" 
-fx:controller="it.unibo.samplejavafx.JavaFXAppWithFXMLController">
-	<children>
-	   <Button fx:id="myButton" onMouseClicked="#myButtonOnClickHandler" prefHeight="116.0" prefWidth="242.0" text="HELLO FXML" textFill="#4a4dff">
-         <font>
-            <Font size="26.0" />
-         </font></Button>
-	   <Label fx:id="myLabel" text="Hold on there" />
-	</children>
+<HBox xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
+	  fx:controller="it.unibo.samplejavafx.JavaFXAppWithFXMLController">
+	<Button fx:id="myButton" onMouseClicked="#myButtonOnClickHandler" prefHeight="116.0" prefWidth="242.0"
+			text="HELLO FXML" textFill="#4a4dff">
+		<font>
+			<Font size="26.0"/>
+		</font>
+	</Button>
+	<Label fx:id="myLabel" text="Hold on there"/>
 </HBox>

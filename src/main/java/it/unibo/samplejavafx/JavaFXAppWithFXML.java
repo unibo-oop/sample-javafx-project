@@ -41,21 +41,7 @@ public class JavaFXAppWithFXML extends Application {
          * @param args
          */
         public static void main(final String... args) {
-            JavaFXAppWithFXML.run(args);
-        }
-    }
-
-    static class AnotherStage extends Stage {
-        private static final int SCENE_WIDTH = 100;
-        private static final int SCENE_HEIGHT = 500;
-
-        AnotherStage() {
-            super();
-            setTitle("New stage created at " + System.currentTimeMillis());
-            final VBox pane = new VBox();
-            pane.getChildren().add(new Label("First label"));
-            pane.getChildren().add(new Label("Second label"));
-            setScene(new Scene(pane, SCENE_WIDTH, SCENE_HEIGHT));
+            run(args);
         }
     }
 }
