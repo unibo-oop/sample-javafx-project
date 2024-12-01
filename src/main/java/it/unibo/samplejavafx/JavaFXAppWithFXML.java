@@ -5,7 +5,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 /**
@@ -38,7 +37,7 @@ public class JavaFXAppWithFXML extends Application {
 
         /**
          * Program's entry point.
-         * @param args
+         * @param args ignored
          */
         public static void main(final String... args) {
             run(args);
