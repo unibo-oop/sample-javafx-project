@@ -38,6 +38,7 @@ dependencies {
 
     // JavaFX: comment out if you do not need them
     val javaFxVersion = 15
+    implementation("org.openjfx:javafx:$javaFxVersion")
     for (platform in supportedPlatforms) {
         for (module in javaFXModules) {
             implementation("org.openjfx:javafx-$module:$javaFxVersion:$platform")
