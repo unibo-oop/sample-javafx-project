@@ -6,5 +6,9 @@
  * Detailed information about configuring a multi-project build in Gradle can be found
  * in the user manual at https://docs.gradle.org/5.5.1/userguide/multi_project_builds.html
  */
+plugins {
+    // Automatically downloads the correct java version to run the static analyzers
+    id("org.gradle.toolchains.foojay-resolver-convention") version "0.9.0"
+}
 
 rootProject.name = "sample-javafx-project"
