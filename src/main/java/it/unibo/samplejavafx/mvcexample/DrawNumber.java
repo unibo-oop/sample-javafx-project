@@ -13,7 +13,7 @@ public interface DrawNumber {
 
     /**
      * Guesses a number.
-     * 
+     *
      * @param n the guess
      * @return the result of the guess
      */

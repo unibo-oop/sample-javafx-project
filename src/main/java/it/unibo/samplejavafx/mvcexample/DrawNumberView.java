@@ -27,7 +27,7 @@ public interface DrawNumberView {
 
     /**
      * Some unexpected error occurred in the Controller, and the user should be informed.
-     * 
+     *
      * @param message the message associated with the error.
      */
     void displayError(String message);

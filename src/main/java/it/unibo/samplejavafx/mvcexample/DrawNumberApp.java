@@ -1,6 +1,5 @@
 package it.unibo.samplejavafx.mvcexample;
 
-import java.io.FileNotFoundException;
 import javafx.application.Application;
 
 /**
@@ -14,9 +13,8 @@ public final class DrawNumberApp {
     /**
      * @param args
      *            ignored
-     * @throws FileNotFoundException 
      */
-    public static void main(final String... args) throws FileNotFoundException {
+    public static void main(final String... args) {
         Application.launch(DrawNumberFXApplication.class, "examplemvc/config.yml");
     }
 }

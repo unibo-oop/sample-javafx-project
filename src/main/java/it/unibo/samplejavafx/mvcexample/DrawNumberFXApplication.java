@@ -37,11 +37,11 @@ public final class DrawNumberFXApplication extends Application implements DrawNu
                 if (lineElements.length == 2) {
                     final int value = Integer.parseInt(lineElements[1].trim());
                     if (lineElements[0].contains("max")) {
-                        configurationBuilder.setMax(value);
+                        configurationBuilder.withMax(value);
                     } else if (lineElements[0].contains("min")) {
-                        configurationBuilder.setMin(value);
+                        configurationBuilder.withMin(value);
                     } else if (lineElements[0].contains("attempts")) {
-                        configurationBuilder.setAttempts(value);
+                        configurationBuilder.withMaxAttempts(value);
                     }
                 } else {
                     displayError("I cannot understand \"" + configLine + '"');
@@ -68,8 +68,8 @@ public final class DrawNumberFXApplication extends Application implements DrawNu
         );
         try {
             views.add(new PrintStreamView("output.log"));
-        } catch (FileNotFoundException fnfe) {
-            System.out.println("Cannot find output file: " + fnfe.getMessage());
+        } catch (final FileNotFoundException notFound) {
+            System.out.println("Cannot find output file: " + notFound.getMessage());
         }
     }
 
@@ -94,7 +94,7 @@ public final class DrawNumberFXApplication extends Application implements DrawNu
             for (final DrawNumberView view : views) {
                 view.result(result);
             }
-        } catch (IllegalArgumentException e) {
+        } catch (final IllegalArgumentException e) {
             for (final DrawNumberView view : views) {
                 view.numberIncorrect();
             }

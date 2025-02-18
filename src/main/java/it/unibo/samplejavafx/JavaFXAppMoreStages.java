@@ -35,8 +35,9 @@ public class JavaFXAppMoreStages extends Application {
             // the constructor will never be called directly.
         }
 
-        /** 
+        /**
          * Entry point of the program.
+         *
          * @param args ignored
          */
         public static void main(final String... args) {

@@ -10,7 +10,7 @@ import javafx.beans.property.SimpleObjectProperty;
 /**
  *
  */
-@SuppressFBWarnings()
+@SuppressFBWarnings
 public final class DrawNumberImpl implements DrawNumberObservable {
 
     private final Property<Integer> choice;

@@ -1,12 +1,11 @@
 package it.unibo.samplejavafx.mvcexample;
 
-
 /**
  * Encapsulates the concept of configuration.
  */
 public final class Configuration {
 
-    private final int max; 
+    private final int max;
     private final int min;
     private final int attempts;
 
@@ -46,20 +45,23 @@ public final class Configuration {
 
     /**
      * Pattern builder: used here because:
-     * 
+     *
+     * <p>
      * - all the parameters of the Configuration class have a default value, which
      * means that we would like to have all the possible combinations of
      * constructors (one with three parameters, three with two parameters, three
      * with a single parameter), which are way too many and confusing to use
-     * 
+     *
+     * <p>
      * - moreover, it would be impossible to provide all of them, because they are
      * all of the same type, and only a single constructor can exist with a given
      * list of parameter types.
-     * 
+     *
+     * <p>
      * - the Configuration class has three parameters of the same type, and it is
      * unclear to understand, in a call to its contructor, which is which. By using
      * the builder, we emulate the so-called "named arguments".
-     * 
+     *
      */
     @SuppressWarnings("PMD.LinguisticNaming")
     public static class Builder {
@@ -74,29 +76,29 @@ public final class Configuration {
         private boolean consumed;
 
         /**
-         * @param min the minimum value
+         * @param minimum the minimum value
          * @return this builder, for method chaining
          */
-        public Builder setMin(final int min) {
-            this.min = min;
+        public Builder withMin(final int minimum) {
+            this.min = minimum;
             return this;
         }
 
         /**
-         * @param max the maximum value
+         * @param maximum the maximum value
          * @return this builder, for method chaining
          */
-        public Builder setMax(final int max) {
-            this.max = max;
+        public Builder withMax(final int maximum) {
+            this.max = maximum;
             return this;
         }
 
         /**
-         * @param attempts the attempts count
+         * @param maxAttempts the maxAttempts count
          * @return this builder, for method chaining
          */
-        public Builder setAttempts(final int attempts) {
-            this.attempts = attempts;
+        public Builder withMaxAttempts(final int maxAttempts) {
+            this.attempts = maxAttempts;
             return this;
         }
 

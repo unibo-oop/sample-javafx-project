@@ -1,6 +1,5 @@
 package it.unibo.samplejavafx.mvcexample;
 
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.PrintStream;
@@ -22,12 +21,12 @@ public final class PrintStreamView implements DrawNumberView {
 
     /**
      * Builds a {@link PrintStreamView} that writes on file, given a path.
-     * 
+     *
      * @param path a file path
-     * @throws FileNotFoundException 
+     * @throws FileNotFoundException if the file cannot be created
      */
     public PrintStreamView(final String path) throws FileNotFoundException {
-        out = new PrintStream(new FileOutputStream(new File(path)), true, StandardCharsets.UTF_8);
+        out = new PrintStream(new FileOutputStream(path), true, StandardCharsets.UTF_8);
     }
 
     @Override

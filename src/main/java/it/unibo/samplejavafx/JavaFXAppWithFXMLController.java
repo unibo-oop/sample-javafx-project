@@ -13,6 +13,7 @@ public class JavaFXAppWithFXMLController {
 
     /**
      * Event handler for `myButton`.
+     *
      * @param event ignored
      */
     @FXML

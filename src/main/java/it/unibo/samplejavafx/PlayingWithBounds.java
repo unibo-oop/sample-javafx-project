@@ -24,15 +24,15 @@ public final class PlayingWithBounds extends Application {
 
     @Override
     public void start(final Stage primaryStage) {
-        final VBox vbox = new VBox(); 
+        final VBox vbox = new VBox();
         final TextField stageWidth = new TextField();
-        final TextField stageHeight = new TextField(); 
+        final TextField stageHeight = new TextField();
         final TextField sceneWidth = new TextField();
-        final TextField sceneHeight = new TextField(); 
+        final TextField sceneHeight = new TextField();
         final TextField rootWidth = new TextField();
-        final TextField rootHeight = new TextField(); 
+        final TextField rootHeight = new TextField();
         final TextField nodeWidth = new TextField();
-        final TextField nodeHeight = new TextField(); 
+        final TextField nodeHeight = new TextField();
         final Button go = new Button("Go!");
         vbox.getChildren().addAll(
             new HBox(new Label("Stage width/height: "), stageWidth, stageHeight),
@@ -127,6 +127,7 @@ public final class PlayingWithBounds extends Application {
 
         /**
          * Program's entry point.
+         *
          * @param args ignored
          */
         public static void main(final String... args) {

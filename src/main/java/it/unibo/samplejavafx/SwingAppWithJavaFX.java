@@ -28,6 +28,7 @@ public final class SwingAppWithJavaFX {
 
     /**
      * Program's entry point.
+     *
      * @param args ignored
      */
     public static void main(final String[] args) {

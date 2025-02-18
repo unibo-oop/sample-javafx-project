@@ -37,6 +37,7 @@ public class JavaFXAppWithFXML extends Application {
 
         /**
          * Program's entry point.
+         *
          * @param args ignored
          */
         public static void main(final String... args) {

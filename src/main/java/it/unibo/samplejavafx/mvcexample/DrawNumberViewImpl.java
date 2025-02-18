@@ -16,7 +16,7 @@ import javafx.stage.Stage;
 /**
  * Graphical {@link DrawNumberView} implementation.
  */
-@SuppressFBWarnings()
+@SuppressFBWarnings
 public final class DrawNumberViewImpl implements DrawNumberView {
 
     private static final String FRAME_NAME = "Draw Number App";
@@ -32,9 +32,10 @@ public final class DrawNumberViewImpl implements DrawNumberView {
     private final Bounds initialBounds;
 
     /**
-     * Initialises a view implementation for a drawnumber game.
-     * @param model
-     * @param initialBounds
+     * Initializes a view implementation for a draw number game.
+     *
+     * @param model the model
+     * @param initialBounds the initial bounds
      */
     public DrawNumberViewImpl(final DrawNumberObservable model, final Bounds initialBounds) {
         this.model = model;
@@ -82,7 +83,7 @@ public final class DrawNumberViewImpl implements DrawNumberView {
         bGo.setOnAction(e -> {
             try {
                 observer.newAttempt(Integer.parseInt(tNumber.getText()));
-            } catch (NumberFormatException exception) {
+            } catch (final NumberFormatException exception) {
                 MessageDialog.showMessageDialog(frame, "Validation error",
                         "You entered " + tNumber.getText() + ". Provide an integer please...");
             }
@@ -128,22 +129,12 @@ public final class DrawNumberViewImpl implements DrawNumberView {
     @Override
     public void result(final DrawResult res) {
         switch (res) {
-            case YOURS_HIGH:
+            case YOURS_HIGH, YOURS_LOW:
                 plainMessage(res.getDescription());
                 return;
-            case YOURS_LOW:
-                plainMessage(res.getDescription());
-                return;
-            case YOU_WON:
+            case YOU_WON, YOU_LOST:
                 plainMessage(res.getDescription() + NEW_GAME);
                 break;
-            case YOU_LOST:
-                // JOptionPane.showMessageDialog(frame, res.getDescription() + NEW_GAME, "Lost",
-                // JOptionPane.WARNING_MESSAGE);
-                plainMessage(res.getDescription() + NEW_GAME);
-                break;
-            default:
-                throw new IllegalStateException("Unexpected result: " + res);
         }
         observer.resetGame();
     }
