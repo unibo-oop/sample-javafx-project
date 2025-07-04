@@ -63,7 +63,6 @@ public final class Configuration {
      * the builder, we emulate the so-called "named arguments".
      *
      */
-    @SuppressWarnings("PMD.LinguisticNaming")
     public static class Builder {
 
         private static final int MIN = 0;
