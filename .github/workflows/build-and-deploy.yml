@@ -22,7 +22,7 @@ jobs:
       matrix:
         os:
           - windows-2025
-          - macos-14
+          - macos-15
           - ubuntu-24.04
         jvm_version: [21, 23]
     runs-on: ${{ matrix.os }}
