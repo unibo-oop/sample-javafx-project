@@ -1,14 +1,11 @@
-package it.unibo.samplejavafx.mvcexample;
+package it.unibo.samplejavafx.mvcexample.view;
+
+import it.unibo.samplejavafx.mvcexample.model.DrawResult;
 
 /**
  *
  */
 public interface DrawNumberView {
-
-    /**
-     * @param observer the controller to attach
-     */
-    void setObserver(DrawNumberViewObserver observer);
 
     /**
      * This method is called before the UI is used. It should finalize its status (if needed).

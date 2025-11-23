@@ -15,6 +15,6 @@ public final class DrawNumberApp {
      *            ignored
      */
     public static void main(final String... args) {
-        Application.launch(DrawNumberFXApplication.class, "examplemvc/config.yml");
+        Application.launch(EntryPoint.class, "examplemvc/config.yml");
     }
 }

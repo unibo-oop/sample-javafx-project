@@ -1,36 +1,32 @@
-package it.unibo.samplejavafx.mvcexample;
+package it.unibo.samplejavafx.mvcexample.controller;
 
+import it.unibo.samplejavafx.mvcexample.model.Configuration;
+import it.unibo.samplejavafx.mvcexample.model.DrawNumber;
+import it.unibo.samplejavafx.mvcexample.model.DrawNumberImpl;
+import it.unibo.samplejavafx.mvcexample.model.DrawResult;
+import it.unibo.samplejavafx.mvcexample.view.DrawNumberView;
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-
 import java.util.Objects;
-import javafx.application.Application;
-import javafx.application.Platform;
-import javafx.geometry.BoundingBox;
-import javafx.stage.Stage;
 
 /**
  * JavaFX application for the "draw number" game.
  */
-public final class DrawNumberFXApplication extends Application implements DrawNumberViewObserver {
+public final class DrawNumberControllerImpl implements DrawNumberController {
 
-    private DrawNumberObservable model;
-    private List<DrawNumberView> views;
+    private final DrawNumber model;
+    private final List<DrawNumberView> views = new ArrayList<>();
 
-    @Override
-    @SuppressWarnings("PMD.SystemPrintln")
-    public void init() {
-        final Parameters params = getParameters();
-        final String configFile = params.getRaw().stream().findFirst().orElseGet(() -> "examplemvc/config.yml");
-
+    /**
+     *
+     */
+    public DrawNumberControllerImpl() {
         final Configuration.Builder configurationBuilder = new Configuration.Builder();
-        final var config = Objects.requireNonNull(ClassLoader.getSystemResourceAsStream(configFile));
+        final var config = Objects.requireNonNull(ClassLoader.getSystemResourceAsStream("examplemvc/config.yml"));
         try (var contents = new BufferedReader(new InputStreamReader(config, StandardCharsets.UTF_8))) {
             for (var configLine = contents.readLine(); configLine != null; configLine = contents.readLine()) {
                 final String[] lineElements = configLine.split(":");
@@ -60,45 +56,26 @@ public final class DrawNumberFXApplication extends Application implements DrawNu
                 + "attempts: " + configuration.getAttempts() + ". Using defaults instead.");
             this.model = new DrawNumberImpl(new Configuration.Builder().build());
         }
-        views = new ArrayList<>();
-        views.addAll(Arrays.asList(
-            new DrawNumberViewImpl(model, new BoundingBox(0, 0, 0, 0)),
-            new DrawNumberViewImpl(model, null),
-            new PrintStreamView(System.out))
-        );
-        try {
-            views.add(new PrintStreamView("output.log"));
-        } catch (final FileNotFoundException notFound) {
-            System.out.println("Cannot find output file: " + notFound.getMessage());
-        }
     }
 
-    @Override
-    public void start(final Stage primaryStage) throws Exception {
-        for (final DrawNumberView view : views) {
-            view.setObserver(this);
-            view.start();
-        }
-    }
-
-    private void displayError(final String err) {
-        for (final DrawNumberView view : views) {
-            view.displayError(err);
-        }
+    private void displayError(final String error) {
+        views.forEach(view -> view.displayError(error));
     }
 
     @Override
     public void newAttempt(final int n) {
         try {
             final DrawResult result = model.attempt(n);
-            for (final DrawNumberView view : views) {
-                view.result(result);
-            }
+            views.forEach(view -> view.result(result));
         } catch (final IllegalArgumentException e) {
-            for (final DrawNumberView view : views) {
-                view.numberIncorrect();
-            }
+            views.forEach(DrawNumberView::numberIncorrect);
         }
+    }
+
+    @Override
+    public void registerView(final DrawNumberView view) {
+        views.add(view);
+        view.start();
     }
 
     @Override
@@ -107,7 +84,17 @@ public final class DrawNumberFXApplication extends Application implements DrawNu
     }
 
     @Override
-    public void quit() {
-        Platform.exit();
+    public int getMax() {
+        return model.getMax();
+    }
+
+    @Override
+    public int getMin() {
+        return model.getMin();
+    }
+
+    @Override
+    public int getAttemptsLeft() {
+        return model.getAttemptsLeft();
     }
 }

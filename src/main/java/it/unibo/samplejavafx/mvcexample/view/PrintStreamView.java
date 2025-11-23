@@ -1,5 +1,6 @@
-package it.unibo.samplejavafx.mvcexample;
+package it.unibo.samplejavafx.mvcexample.view;
 
+import it.unibo.samplejavafx.mvcexample.model.DrawResult;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.PrintStream;
@@ -30,13 +31,6 @@ public final class PrintStreamView implements DrawNumberView {
     }
 
     @Override
-    public void setObserver(final DrawNumberViewObserver observer) {
-        /*
-         * This UI is output only.
-         */
-    }
-
-    @Override
     public void start() {
         /*
          * PrintStreams are always ready.
@@ -50,7 +44,7 @@ public final class PrintStreamView implements DrawNumberView {
 
     @Override
     public void result(final DrawResult res) {
-        out.println(res.getDescription());
+        out.println(res.drawResult().getDescription());
     }
 
     @Override

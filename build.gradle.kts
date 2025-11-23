@@ -19,6 +19,13 @@ repositories {
     mavenCentral()
 }
 
+java {
+    toolchain {
+        // Java version used to compile and run the project
+        languageVersion.set(JavaLanguageVersion.of(21))
+    }
+}
+
 val javaFXModules = listOf(
     "base",
     "controls",
