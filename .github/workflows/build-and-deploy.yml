@@ -24,7 +24,7 @@ jobs:
           - windows-2025
           - macos-15
           - ubuntu-24.04
-        jvm_version: [21, 23]
+        jvm_version: [21, 25]
     runs-on: ${{ matrix.os }}
     steps:
       - name: Checkout
