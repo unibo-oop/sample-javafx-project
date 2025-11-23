@@ -31,7 +31,7 @@ val supportedPlatforms = listOf("linux", "mac", "win") // All required for OOP
 
 dependencies {
     // Suppressions for SpotBugs
-    compileOnly("com.github.spotbugs:spotbugs-annotations:4.9.6")
+    compileOnly("com.github.spotbugs:spotbugs-annotations:4.9.8")
 
     // Example library: Guava. Add what you need (and use the latest version where appropriate).
     // implementation("com.google.guava:guava:28.1-jre")
