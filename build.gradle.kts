@@ -11,7 +11,7 @@ plugins {
      * In order to create it, launch the "shadowJar" task.
      * The runnable jar will be found in build/libs/projectname-all.jar
      */
-    id("com.gradleup.shadow") version "9.2.2"
+    id("com.gradleup.shadow") version "9.3.0"
     id("org.danilopianini.gradle-java-qa") version "1.159.0"
 }
 
