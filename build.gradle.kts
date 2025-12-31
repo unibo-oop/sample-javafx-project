@@ -12,7 +12,7 @@ plugins {
      * The runnable jar will be found in build/libs/projectname-all.jar
      */
     id("com.gradleup.shadow") version "9.3.0"
-    id("org.danilopianini.gradle-java-qa") version "1.162.0"
+    id("org.danilopianini.gradle-java-qa") version "1.163.0"
 }
 
 repositories {
