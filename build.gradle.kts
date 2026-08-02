@@ -22,7 +22,7 @@ repositories {
 java {
     toolchain {
         // Java version used to compile and run the project
-        languageVersion.set(JavaLanguageVersion.of(21))
+        languageVersion.set(JavaLanguageVersion.of(25))
     }
 }
 
