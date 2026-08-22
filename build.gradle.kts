@@ -38,7 +38,7 @@ dependencies {
     // implementation("com.google.guava:guava:28.1-jre")
 
     // JavaFX: comment out if you do not need them
-    val javaFxVersion = "28-ea+4"
+    val javaFxVersion = "28-ea+5"
     implementation("org.openjfx:javafx:$javaFxVersion")
     for (platform in supportedPlatforms) {
         for (module in javaFXModules) {
