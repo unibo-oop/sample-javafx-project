@@ -36,7 +36,7 @@ jobs:
           should-deploy: false
           should-validate-wrapper: ${{ matrix.os == 'ubuntu' && matrix.jvm_version == '17' }}
   success:
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-26.04
     needs:
       - build
     if: >-
